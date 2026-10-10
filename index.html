@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Control de inventario y ventas</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header><h1>Control de inventario y ventas</h1></header>
+
+<main>
+  <section>
+    <h2 id="titulo-form">Agregar producto</h2>
+    <form id="form-producto">
+      <input id="p-nombre" placeholder="Nombre del producto" required>
+      <input id="p-precio" type="number" min="0" step="0.01" placeholder="Precio" required>
+      <input id="p-stock" type="number" min="0" step="1" placeholder="Cantidad" required>
+      <button id="btn-guardar">Agregar producto</button>
+      <button type="button" id="btn-cancelar" class="sec oculto">Cancelar</button>
+    </form>
+    <table>
+      <thead><tr><th>Producto</th><th>Precio</th><th>Stock</th><th></th></tr></thead>
+      <tbody id="lista-productos"></tbody>
+    </table>
+    <p class="nota">Las filas en rojo tienen pocas unidades (5 o menos).</p>
+  </section>
+
+  <section>
+    <h2>Registrar venta</h2>
+    <form id="form-venta">
+      <select id="v-producto"></select>
+      <input id="v-cantidad" type="number" min="1" step="1" value="1">
+      <button>Vender</button>
+    </form>
+    <p id="mensaje" role="alert"></p>
+
+    <h2>Ventas realizadas</h2>
+    <table>
+      <thead><tr><th>Fecha</th><th>Producto</th><th>Cant.</th><th>Total</th><th></th></tr></thead>
+      <tbody id="lista-ventas"></tbody>
+    </table>
+    <p class="total">Total vendido: <strong id="total-vendido">C$ 0.00</strong></p>
+  </section>
+</main>
+
+  <div id="modal-confirmar" class="modal-overlay oculto">
+    <div class="modal-caja">
+      <h3>Confirmar eliminación</h3>
+      <p id="modal-mensaje">¿Estás seguro que quieres eliminar este registro?</p>
+      <div class="modal-acciones">
+        <button type="button" id="modal-btn-cancelar" class="sec">Cancelar</button>
+        <button type="button" id="modal-btn-confirmar" class="borrar-solido">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
